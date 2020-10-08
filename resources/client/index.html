@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body onload="pageLoad()">
-<script src="script.js"></script>
-<ul>
-    <img src="zeldalogo.png" alt="logo" style="width:250px;height:200px";>
+<script src="js/script.js"></script>
+<ul id="menu">
+    <img src="img/zeldalogo.png" alt="logo" style="width:250px;height:200px";>
     <li class="dropdown">
         <div>
             <a onclick="dropdownClick('rules')">Rules</a>
@@ -59,6 +59,6 @@
         </div>
     </li>
 </ul>
-<canvas id="gameCanvas"/>
+<canvas id="gameCanvas"></canvas>
 </body>
 </html>
