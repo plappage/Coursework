@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-hello it works good job!
+<body onload="pageLoad()">
+<script src="script.js"></script>
+<ul>
+    <img src="zeldalogo.png" alt="logo" style="width:250px;height:200px";>
+    <li class="dropdown">
+        <div>
+            <a onclick="dropdownClick('rules')">Rules</a>
+        </div>
+        <div id="rules" class="dropdown-content">
+            <div class="ruleSlides">
+                <p>helo</p>
+            </div>
+            <div class="ruleSlides">
+                <p>the second one</p>
+            </div>
+            <div class="ruleSlides">
+                <p>chebesbuger</p>
+            </div>
+        </div>
+    </li>
+    <li class="dropdown">
+        <div>
+            <a>Options</a>
+        </div>
+    </li>
+    <li class="dropdown">
+        <div>
+            <a onclick="dropdownClick('shop')">Shop</a>
+        </div>
+        <div id="shop" class="dropdown-content">
+            <p class="items">Bombs</p>
+            <p class="items">Hookshot</p>
+            <p class="items">Lens</p>
+            <p class="items">Boomerang</p>
+        </div>
+    </li>
+    <li class="dropdown">
+        <div>
+            <a onclick="dropdownClick('inventory')">Inventory</a>
+        </div>
+        <div id="inventory" class="dropdown-content">
+            <p class="items">Bombs</p>
+            <p class="items">Hookshot</p>
+            <p class="items">Lens</p>
+            <p class="items">Boomerang</p>
+        </div>
+    </li>
+    <li class="dropdown">
+        <div>
+            <a>New Game</a>
+        </div>
+    </li>
+</ul>
+<canvas id="gameCanvas"/>
 </body>
 </html>
