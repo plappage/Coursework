@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <script src="js/leaderboard.js"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
-<body onload="pageLoad()">
-<script src="js/script.js"></script>
+<body>
+<button onclick='getEntryList();'>Run getEntryList</button>
+<table id="LeaderboardTable"></table>
+<br>
 <ul id="menu">
     <img src="img/zeldalogo.png" alt="logo" style="width:250px;height:200px";>
     <li class="dropdown">
