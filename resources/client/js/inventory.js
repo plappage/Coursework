@@ -1,5 +1,5 @@
 "use strict";
-function getInventoryLoad() {
+function getInventoryLoad(x) {
     console.log("Invoked getInventoryLoad()");
     const url = "/inventory/load/";
     fetch(url, {
@@ -10,15 +10,30 @@ function getInventoryLoad() {
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
-            formatInventoryLoad(response);
+            if (x === "Inventory"){
+                formatInventoryLoadForInventory(response);
+            } else {
+                formatInventoryLoadForShop(response);
+            }
+
         }
     });
 }
 
-function formatInventoryLoad(myJSONArray){
+function formatInventoryLoadForInventory(myJSONArray){
     let dataHTML = "";
     for (let item of myJSONArray) {
-        dataHTML += "<tr><td>" + item.itemID + "<td><td>" + item.price + "<td><td>" + item.quantity + "<tr><td>";
+        if (item.itemID === 4) break;
+        dataHTML += "<a>" + item.quantity + "</a>";
+    }
+    document.getElementById("InventoryButtons").innerHTML = dataHTML;
+    document.getElementById("InventoryButtons").style.display = "block";
+}
+
+function formatInventoryLoadForShop(myJSONArray){
+    let dataHTML = "";
+    for (let item of myJSONArray) {
+        dataHTML += "<tr><td>" + item.price + "</td><td>" + item.quantity + "</td></tr>";
     }
     document.getElementById("InventoryTable").innerHTML = dataHTML;
 }

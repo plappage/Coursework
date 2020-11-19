@@ -3,30 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <script src="js/leaderboard.js"></script>
+    <title>Zelda Solitaire</title>
+    <script src="js/script.js"></script>
+    <script src="js/inventory.js"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button onclick='getEntryList();'>Run getEntryList</button>
-<table id="LeaderboardTable"></table>
-<br>
 <ul id="menu">
     <img src="img/zeldalogo.png" alt="logo" style="width:250px;height:200px";>
     <li class="dropdown">
         <div>
-            <a onclick="dropdownClick('rules')">Rules</a>
+            <a onClick="leaderboardClick()">Leaderboard</a>
         </div>
-        <div id="rules" class="dropdown-content">
-            <div class="ruleSlides">
-                <p>helo</p>
-            </div>
-            <div class="ruleSlides">
-                <p>the second one</p>
-            </div>
-            <div class="ruleSlides">
-                <p>chebesbuger</p>
-            </div>
+    </li>
+    <li class="dropdown">
+        <div>
+            <a onclick="rulesClick()">Rules</a>
         </div>
     </li>
     <li class="dropdown">
@@ -36,7 +28,7 @@
     </li>
     <li class="dropdown">
         <div>
-            <a onclick="dropdownClick('shop')">Shop</a>
+            <a onclick="shopClick()">Shop</a>
         </div>
         <div id="shop" class="dropdown-content">
             <p class="items">Bombs</p>
@@ -47,21 +39,15 @@
     </li>
     <li class="dropdown">
         <div>
-            <a onclick="dropdownClick('inventory')">Inventory</a>
-        </div>
-        <div id="inventory" class="dropdown-content">
-            <p class="items">Bombs</p>
-            <p class="items">Hookshot</p>
-            <p class="items">Lens</p>
-            <p class="items">Boomerang</p>
+            <a onmouseover="getInventoryLoad('Inventory')" onmouseout="backToNormal('InventoryButtons')">Inventory</a>
+            <div class="btn-group" id="InventoryButtons"></div>
         </div>
     </li>
     <li class="dropdown">
         <div>
-            <a>New Game</a>
+            <a onclick="location.reload()">New Game</a>
         </div>
     </li>
 </ul>
-<canvas id="gameCanvas"></canvas>
 </body>
 </html>
