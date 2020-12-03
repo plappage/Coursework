@@ -13,7 +13,7 @@
     <img src="img/zeldalogo.png" alt="logo" style="width:250px;height:200px";>
     <li class="dropdown">
         <div>
-            <a onClick="leaderboardClick()">Leaderboard</a>
+            <a onClick="window.open('/client/leaderboard.html','_self')">Leaderboard</a>
         </div>
     </li>
     <li class="dropdown">
@@ -28,7 +28,7 @@
     </li>
     <li class="dropdown">
         <div>
-            <a onclick="shopClick()">Shop</a>
+            <a onclick="getInventoryLoad('Shop')">Shop</a>
         </div>
         <div id="shop" class="dropdown-content">
             <p class="items">Bombs</p>
@@ -39,9 +39,9 @@
     </li>
     <li class="dropdown">
         <div>
-            <a onmouseover="getInventoryLoad('Inventory')" onmouseout="backToNormal('InventoryButtons')">Inventory</a>
-            <div class="btn-group" id="InventoryButtons"></div>
+            <a onclick="getInventoryLoad('Inventory')">Inventory</a>
         </div>
+        <div class="btn-group" id="InventoryButtons"></div>
     </li>
     <li class="dropdown">
         <div>

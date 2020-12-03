@@ -21,13 +21,14 @@ public class Inventory{
         System.out.println("Invoked Inventory.inventoryLoad()");
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT itemID, price, quantity FROM Inventory");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Inventory");
             ResultSet results = ps.executeQuery();
             while (results.next()==true) {
                 JSONObject row = new JSONObject();
                 row.put("itemID", results.getInt(1));
                 row.put("price", results.getInt(2));
                 row.put("quantity", results.getInt(3));
+                row.put("name", results.getString(4));
                 response.add(row);
             }
             return response.toString();

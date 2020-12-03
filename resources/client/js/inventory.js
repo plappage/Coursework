@@ -1,30 +1,37 @@
 "use strict";
+var timesClicked = 0;
 function getInventoryLoad(x) {
-    console.log("Invoked getInventoryLoad()");
-    const url = "/inventory/load/";
-    fetch(url, {
-        method: "GET",
-    }).then(response => {
-        return response.json();
-    }).then(response => {
-        if (response.hasOwnProperty("Error")) {
-            alert(JSON.stringify(response));
-        } else {
-            if (x === "Inventory"){
-                formatInventoryLoadForInventory(response);
+    timesClicked++;
+    if (timesClicked%2===0){
+        x = document.getElementById("InventoryButtons");
+        x.style.display = "none";
+    }else{
+        console.log("Invoked getInventoryLoad()");
+        const url = "/inventory/load/";
+        fetch(url, {
+            method: "GET",
+        }).then(response => {
+            return response.json();
+        }).then(response => {
+            if (response.hasOwnProperty("Error")) {
+                alert(JSON.stringify(response));
             } else {
-                formatInventoryLoadForShop(response);
-            }
+                if (x === "Inventory"){
+                    formatInventoryLoadForInventory(response);
+                } else {
+                    formatInventoryLoadForShop(response);
+                }
 
-        }
-    });
+            }
+        });
+    }
 }
 
 function formatInventoryLoadForInventory(myJSONArray){
     let dataHTML = "";
     for (let item of myJSONArray) {
         if (item.itemID === 4) break;
-        dataHTML += "<a>" + item.quantity + "</a>";
+        dataHTML += "<p class='items' onclick='inventoryClick("+ item.itemID + ")'>" + item.name + "   " + item.quantity + "</p>";
     }
     document.getElementById("InventoryButtons").innerHTML = dataHTML;
     document.getElementById("InventoryButtons").style.display = "block";
@@ -33,7 +40,10 @@ function formatInventoryLoadForInventory(myJSONArray){
 function formatInventoryLoadForShop(myJSONArray){
     let dataHTML = "";
     for (let item of myJSONArray) {
-        dataHTML += "<tr><td>" + item.price + "</td><td>" + item.quantity + "</td></tr>";
+        dataHTML += item.price + " " + item.quantity;
     }
-    document.getElementById("InventoryTable").innerHTML = dataHTML;
+    document.getElementById("shop").innerHTML = dataHTML;
+}
+function inventoryClick(item){
+
 }
