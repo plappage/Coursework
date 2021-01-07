@@ -19,18 +19,20 @@ public class Inventory{
     @Path("load")
     public String inventoryLoad() {
         System.out.println("Invoked Inventory.inventoryLoad()");
-        JSONArray response = new JSONArray();
+        JSONArray inventory = new JSONArray();
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Inventory");
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next()) {
                 JSONObject row = new JSONObject();
                 row.put("itemID", results.getInt(1));
                 row.put("price", results.getInt(2));
                 row.put("quantity", results.getInt(3));
                 row.put("name", results.getString(4));
-                response.add(row);
+                inventory.add(row);
             }
+            JSONObject response = new JSONObject();
+            response.put("inventory",inventory);
             return response.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());

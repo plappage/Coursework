@@ -10,17 +10,17 @@ function getEntryList(){
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
-            formatEntryList(response);
+            let dataHTML = "";
+            let i = 0;
+            for (let item of response.leaderboard) {
+                i++
+                if (i>10) break;
+                dataHTML += "<tr><td><img src='img/linksprite.png' style='height:100px;width:auto;'></td><td>" + i + "." + "</td><td>" + item.name + "</td><td>" + item.time + "</td></tr>";
+            }
+            document.getElementById("leaderboardTable").innerHTML = dataHTML;
         }
     });
 }
 function formatEntryList(myJSONArray){
-    let dataHTML = "";
-    let i = 0;
-    for (let item of myJSONArray) {
-        i++
-        if (i>10) break;
-        dataHTML += "<tr><td><img src='img/linksprite.png' style='height:100px;width:auto;'></td><td>" + i + "." + "</td><td>" + item.name + "</td><td>" + item.time + "</td></tr>";
-    }
-    document.getElementById("leaderboardTable").innerHTML = dataHTML;
+
 }

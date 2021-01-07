@@ -30,7 +30,9 @@ public class Leaderboard{
                 row.put("time", results.getInt(3));
                 response.add(row);
             }
-            return response.toString();
+            JSONObject jso = new JSONObject();
+            jso.put("leaderboard", response);
+            return jso.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items.  Error code xx.\"}";

@@ -16,10 +16,20 @@ function getInventoryLoad(x) {
             if (response.hasOwnProperty("Error")) {
                 alert(JSON.stringify(response));
             } else {
-                if (x === "Inventory"){
-                    formatInventoryLoadForInventory(response);
+                if (response.hasOwnProperty("inventory")){
+                    let dataHTML = "";
+                    for (let item of response.inventory) {
+                        if (item.itemID === 4) break;
+                        dataHTML += "<p class='items' onclick='inventoryClick("+ item.itemID + ")'>" + item.name + "   " + item.quantity + "</p>";
+                    }
+                    document.getElementById("InventoryButtons").innerHTML = dataHTML;
+                    document.getElementById("InventoryButtons").style.display = "block";
                 } else {
-                    formatInventoryLoadForShop(response);
+                    let dataHTML = "";
+                    for (let item of response.inventory) {
+                        dataHTML += item.price + " " + item.quantity;
+                    }
+                    document.getElementById("shop").innerHTML = dataHTML;
                 }
 
             }
@@ -28,21 +38,11 @@ function getInventoryLoad(x) {
 }
 
 function formatInventoryLoadForInventory(myJSONArray){
-    let dataHTML = "";
-    for (let item of myJSONArray) {
-        if (item.itemID === 4) break;
-        dataHTML += "<p class='items' onclick='inventoryClick("+ item.itemID + ")'>" + item.name + "   " + item.quantity + "</p>";
-    }
-    document.getElementById("InventoryButtons").innerHTML = dataHTML;
-    document.getElementById("InventoryButtons").style.display = "block";
+
 }
 
 function formatInventoryLoadForShop(myJSONArray){
-    let dataHTML = "";
-    for (let item of myJSONArray) {
-        dataHTML += item.price + " " + item.quantity;
-    }
-    document.getElementById("shop").innerHTML = dataHTML;
+
 }
 function inventoryClick(item){
 
