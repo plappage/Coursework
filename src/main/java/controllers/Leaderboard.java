@@ -21,7 +21,7 @@ public class Leaderboard{
         System.out.println("Invoked Leaderboard.entryList()");
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Leaderboard ORDER BY time");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Leaderboard ORDER BY time LIMIT 10");
             ResultSet results = ps.executeQuery();
             while (results.next()==true) {
                 JSONObject row = new JSONObject();
